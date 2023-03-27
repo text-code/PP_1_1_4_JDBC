@@ -14,7 +14,7 @@ public class Main {
 
         System.out.println(table.getAllUsers());
 
-//        table.removeUserById(3);
+//        table.removeUserById(1);
         table.cleanUsersTable();
         table.dropUsersTable();
     }
