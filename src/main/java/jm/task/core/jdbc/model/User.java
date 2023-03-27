@@ -1,12 +1,12 @@
 package jm.task.core.jdbc.model;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Table
+
+@Entity(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -65,3 +65,4 @@ public class User {
         return "ID: " + id + "\nName: " + name + "\nLast name: " + lastName + "\nAge: " + age + "\n";
     }
 }
+
