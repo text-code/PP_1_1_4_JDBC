@@ -16,18 +16,19 @@ public class Util {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "BDu#Hd2q#-h%v45h";
 
-    public Connection getConnection() {
-        Connection connection;
+    public static Connection getConnection() {
+        Connection connection = null;
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            connection.setAutoCommit(false);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return connection;
     }
 
 
-    public SessionFactory getSessionFactory() {
+    public static SessionFactory getSessionFactory() {
         SessionFactory sessionFactory = null;
         try {
             Properties properties = new Properties();
@@ -47,7 +48,7 @@ public class Util {
                     .applySettings(configuration.getProperties()).build();
 
             sessionFactory = configuration.buildSessionFactory(registryBuilder);
-        } catch (Throwable e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return sessionFactory;
